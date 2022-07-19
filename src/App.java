@@ -15,7 +15,6 @@ public class App {
 
         JasonParser parser = new JasonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
-        System.out.println(listaDeFilmes.size());
 
         for (Map<String,String> filme : listaDeFilmes) {
             System.out.println(filme.get("title"));
