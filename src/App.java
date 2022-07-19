@@ -15,11 +15,19 @@ public class App {
 
         JasonParser parser = new JasonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        System.out.println(listaDeFilmes.size());
 
         for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+            String titulo = filme.get("title");
+            System.out.println("\u001b[0mTitulo: \u001b[1m" + titulo);
+            String poster = filme.get("image");
+            System.out.println("\u001b[0mPoster: \u001b[1m" + poster);
+            String classificacao = filme.get("imDbRating");
+            System.out.println("\u001b[37m\u001b[44mClassificação: " + classificacao + "\u001b[m");
+            for(int item = 1; item <= Double.valueOf(classificacao); item++){
+                System.out.print("\u2B50");
+            }
+            System.out.println();
             System.out.println();
         }
     }
