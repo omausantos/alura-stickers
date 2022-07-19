@@ -2,6 +2,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -11,8 +13,8 @@ public class App {
         HttpRequest request = HttpRequest.newBuilder(uri).GET().build();
         String body = client.send(request, BodyHandlers.ofString()).body();
 
-        System.out.println(body);
-
-
+        JasonParser parser = new JasonParser();
+        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        System.out.println(listaDeFilmes.size());
     }
 }
